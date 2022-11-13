@@ -4,6 +4,7 @@ import Config from '../Config';
 import Result from '../Result';
 import Tabs from '../Tabs';
 import { ConfigProvider } from '../ConfigProvider';
+import { ActiveTabProvider } from '../ActiveTabsProvider';
 
 const tabs = [
 	{ id: '1', label: 'Config', tab: <Config /> },
@@ -17,7 +18,9 @@ const App = () => (
 				Form task
 			</Typography>
 			<ConfigProvider>
-				<Tabs tabs={tabs} defaultTabID="1" />
+				<ActiveTabProvider>
+					<Tabs tabs={tabs} defaultTabID="1" />
+				</ActiveTabProvider>
 			</ConfigProvider>
 		</Box>
 	</Container>

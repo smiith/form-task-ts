@@ -1,6 +1,7 @@
 import { Button, Stack, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useConfigContext } from '../ConfigProvider';
+import { useActiveTabContext } from '../ActiveTabsProvider';
 
 const ERROR_MESSAGE = 'Error during parsing json';
 
@@ -8,6 +9,8 @@ const Config = () => {
 	const [inputError, setInputError] = useState(false);
 
 	const { setConfig, setUnparsedConfig, unparsedConfig } = useConfigContext();
+
+	const { setActiveTab } = useActiveTabContext();
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setUnparsedConfig(event.target.value);
@@ -18,6 +21,7 @@ const Config = () => {
 		try {
 			const parsedConfig = JSON.parse(unparsedConfig);
 			setConfig(parsedConfig);
+			setActiveTab('2');
 		} catch (error) {
 			setInputError(true);
 		}

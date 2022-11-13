@@ -1,7 +1,8 @@
 import { TabContext, TabList } from '@mui/lab';
 import { Tab } from '@mui/material';
 import TabPanel from '@mui/lab/TabPanel';
-import React, { ReactNode, SyntheticEvent, useState } from 'react';
+import React, { ReactNode, SyntheticEvent, useEffect } from 'react';
+import { useActiveTabContext } from '../ActiveTabsProvider';
 
 type TabItem = { id: string; label: string; tab: ReactNode };
 
@@ -11,7 +12,9 @@ type TabsProps = {
 };
 
 const Tabs = ({ tabs = [], defaultTabID }: TabsProps) => {
-	const [activeTab, setActiveTab] = useState<string>(defaultTabID);
+	const { activeTab, setActiveTab } = useActiveTabContext();
+
+	useEffect(() => setActiveTab(defaultTabID), [setActiveTab, defaultTabID]);
 
 	const handleTabChange = (event: SyntheticEvent, newValue: string) => {
 		setActiveTab(newValue);
