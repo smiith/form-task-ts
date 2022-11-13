@@ -12,6 +12,8 @@ type ConfigType = {
 type ConfigContextType = {
 	config: ConfigType;
 	setConfig: Dispatch<SetStateAction<ConfigType>>;
+	unparsedConfig: string;
+	setUnparsedConfig: Dispatch<SetStateAction<string>>;
 };
 
 type ConfigProviderProps = {
@@ -22,7 +24,12 @@ const ConfigContext = createContext<ConfigContextType | null>(null);
 
 export const ConfigProvider = ({ children }: ConfigProviderProps) => {
 	const [config, setConfig] = useState({});
-	return <ConfigContext.Provider value={{ config, setConfig }}>{children}</ConfigContext.Provider>;
+	const [unparsedConfig, setUnparsedConfig] = useState('');
+	return (
+		<ConfigContext.Provider value={{ config, setConfig, unparsedConfig, setUnparsedConfig }}>
+			{children}
+		</ConfigContext.Provider>
+	);
 };
 
 export const useConfigContext = () => useContext(ConfigContext) as ConfigContextType;

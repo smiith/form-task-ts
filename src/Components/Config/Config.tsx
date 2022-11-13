@@ -5,19 +5,18 @@ import { useConfigContext } from '../ConfigProvider';
 const ERROR_MESSAGE = 'Error during parsing json';
 
 const Config = () => {
-	const [inputValue, setInputValue] = useState('');
 	const [inputError, setInputError] = useState(false);
 
-	const { setConfig } = useConfigContext();
+	const { setConfig, setUnparsedConfig, unparsedConfig } = useConfigContext();
 
-	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> ) => {
-		setInputValue(event.target.value);
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setUnparsedConfig(event.target.value);
 		setInputError(false);
 	};
 
 	const handleApplyButtonClick = () => {
 		try {
-			const parsedConfig = JSON.parse(inputValue);
+			const parsedConfig = JSON.parse(unparsedConfig);
 			setConfig(parsedConfig);
 		} catch (error) {
 			setInputError(true);
@@ -27,7 +26,7 @@ const Config = () => {
 	return (
 		<Stack spacing={2}>
 			<TextField
-				value={inputValue}
+				value={unparsedConfig}
 				multiline
 				minRows={20}
 				onChange={handleInputChange}
