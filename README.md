@@ -25,6 +25,10 @@ Example of config:
 
 ```
 
+## Deployed version:
+
+https://form-task-ts.vercel.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
