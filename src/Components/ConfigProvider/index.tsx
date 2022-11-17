@@ -1,5 +1,6 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 import { ItemTypeStrings } from '../Result/Result';
+import { DEFAULT_CONFIG } from './constants';
 
 export type ConfigType = {
 	header?: { label: string };
@@ -24,7 +25,7 @@ const ConfigContext = createContext<ConfigContextType | null>(null);
 
 export const ConfigProvider = ({ children }: ConfigProviderProps) => {
 	const [config, setConfig] = useState({});
-	const [unparsedConfig, setUnparsedConfig] = useState('');
+	const [unparsedConfig, setUnparsedConfig] = useState(DEFAULT_CONFIG);
 	return (
 		<ConfigContext.Provider value={{ config, setConfig, unparsedConfig, setUnparsedConfig }}>
 			{children}
