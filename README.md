@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+### Form generation demo from JSON config Typescript variant.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Example of config:
+
+```json
+{
+  "header": { "label": "Form label" },
+  "items": [
+    { "label": "Count", "type": "numberField" },
+    { "label": "Caption", "type": "textField" },
+    { "label": "Date field", "type": "dateField" },
+    { "label": "Text area", "type": "textArea" },
+    { "label": "Checkbox", "type": "checkBox" },
+    {
+      "label": "Radio group",
+      "type": "radioGroup",
+      "options": [
+        { "label": "First option", "value": "a" },
+        { "label": "Second option", "value": "b" }
+      ]
+    }
+  ],
+  "footer": { "buttons": [{ "label": "Ok" }, { "label": "Cancel" }] }
+}
+
+```
 
 ## Available Scripts
 
