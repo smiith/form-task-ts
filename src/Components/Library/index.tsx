@@ -4,7 +4,9 @@ export const NumberField = (props: { label: string }) => <TextField type="number
 
 export const TextAreaField = (props: { label: string }) => <TextField multiline minRows={2} {...props} />;
 
-export const DateField = (props: { label: string }) => <TextField type="date" {...props} />;
+export const DateField = (props: { label: string }) => (
+	<TextField InputLabelProps={{ shrink: true }} type="date" {...props} />
+);
 
 export const CheckboxField = ({ label, ...restProps }: { label: string }) => (
 	<FormControlLabel control={<Checkbox {...restProps} />} label={label} labelPlacement="start" />
