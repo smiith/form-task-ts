@@ -15,7 +15,7 @@ const tabs = [
 const App = () => (
 	<Container maxWidth="sm" className="App">
 		<Box sx={{ width: '100%', typography: 'body1' }}>
-			<Typography variant="h4" component="h1" gutterBottom>
+			<Typography variant="h4" component="h1" gutterBottom paddingTop="16px">
 				Form task
 			</Typography>
 			<ConfigProvider>
