@@ -1,7 +1,7 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 import { ItemTypeStrings } from '../Result/Result';
 
-type ConfigType = {
+export type ConfigType = {
 	header?: { label: string };
 	items?: { label: string; type: ItemTypeStrings; options?: { label: string; value: string }[] }[];
 	footer?: {

@@ -1,7 +1,8 @@
 import { Button, Stack, TextField } from '@mui/material';
 import React, { useState } from 'react';
-import { useConfigContext } from '../ConfigProvider';
+import { ConfigType, useConfigContext } from '../ConfigProvider';
 import { useActiveTabContext } from '../ActiveTabsProvider';
+import { validate } from './schema';
 
 const ERROR_MESSAGE = 'Error during parsing json';
 
@@ -20,7 +21,12 @@ const Config = () => {
 	const handleApplyButtonClick = () => {
 		try {
 			const parsedConfig = JSON.parse(unparsedConfig);
-			setConfig(parsedConfig);
+			const valid = validate(parsedConfig);
+			if (!valid) {
+				setInputError(true);
+				return;
+			}
+			setConfig(parsedConfig as ConfigType);
 			setActiveTab('2');
 		} catch (error) {
 			setInputError(true);
