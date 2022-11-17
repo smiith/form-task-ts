@@ -7,12 +7,13 @@ type ActiveTabContextType = {
 
 type ActiveTabProviderProps = {
 	children: ReactNode;
+	defaultTabId: string;
 };
 
 const ActiveTabContext = createContext<ActiveTabContextType | null>(null);
 
-export const ActiveTabProvider = ({ children }: ActiveTabProviderProps) => {
-	const [activeTab, setActiveTab] = useState('');
+export const ActiveTabProvider = ({ children, defaultTabId }: ActiveTabProviderProps) => {
+	const [activeTab, setActiveTab] = useState(defaultTabId);
 	return <ActiveTabContext.Provider value={{ activeTab, setActiveTab }}>{children}</ActiveTabContext.Provider>;
 };
 

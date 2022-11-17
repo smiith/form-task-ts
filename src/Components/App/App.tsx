@@ -5,10 +5,11 @@ import Result from '../Result';
 import Tabs from '../Tabs';
 import { ConfigProvider } from '../ConfigProvider';
 import { ActiveTabProvider } from '../ActiveTabsProvider';
+import { TAB_ID } from './constants';
 
 const tabs = [
-	{ id: '1', label: 'Config', tab: <Config /> },
-	{ id: '2', label: 'Result', tab: <Result /> },
+	{ id: TAB_ID.CONFIG, label: 'Config', tab: <Config /> },
+	{ id: TAB_ID.RESULT, label: 'Result', tab: <Result /> },
 ];
 
 const App = () => (
@@ -18,8 +19,8 @@ const App = () => (
 				Form task
 			</Typography>
 			<ConfigProvider>
-				<ActiveTabProvider>
-					<Tabs tabs={tabs} defaultTabID="1" />
+				<ActiveTabProvider defaultTabId={TAB_ID.CONFIG}>
+					<Tabs tabs={tabs} />
 				</ActiveTabProvider>
 			</ConfigProvider>
 		</Box>

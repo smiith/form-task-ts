@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ConfigType, useConfigContext } from '../ConfigProvider';
 import { useActiveTabContext } from '../ActiveTabsProvider';
 import { validate } from './schema';
+import { TAB_ID } from '../App/constants';
 
 const ERROR_MESSAGE = 'Error during parsing json';
 
@@ -27,7 +28,7 @@ const Config = () => {
 				return;
 			}
 			setConfig(parsedConfig as ConfigType);
-			setActiveTab('2');
+			setActiveTab(TAB_ID.RESULT);
 		} catch (error) {
 			setInputError(true);
 		}
